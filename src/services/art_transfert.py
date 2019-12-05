@@ -10,6 +10,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 import matplotlib.pyplot as plt
+import numpy as np
 
 import torchvision.transforms as transforms
 import torchvision.models as models
@@ -73,11 +74,11 @@ class Art_transfert():
         ## resize to content size
         content_img_size = (968, 512)
         image = image.resize(content_img_size, Image.NEAREST) 
-        # print(image.size)
-        # image.save('data/images/output_.jpg')
         self.image = image
 
     def save_out(self):
-        self.image.save('data/images/output_.jpg')
+        # self.image.save('data/images/output_.jpg')
+        return "the_url_we_are_looking_for"
+        # return np.asarray(self.image)
 
 
