@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: ART TRANSFERT API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+servers:
+  - url: '/v1'
+    description: Optional server description, e.g. Main (production) server
+
+paths:
+  /art_transfert:
+    post:
+      operationId: controllers.artistic.trans_art
+      summary: Returns a url
+      description: ART TRANSFERT
+      requestBody:
+              required : True
+              content:
+                application/json :
+                  schema:
+                    $ref: '#/components/schemas/Pred'
+                    required:
+                      - content
+                      - style
+                      - iter_num
+      responses:
+        '200':    # status code
+          description: 'perfect' 
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Res'
+
+        '400':
+          description: 'Bad request'
+        '401':
+          description: 'Authorization information is missing or invalid.'
+        '404':
+          description: 'A model with the specified name was not found.'
+        '5XX':
+          description: 'Unexpected error.'
+          
+                  
+                  
+components:
+  schemas:
+    Pred:
+      type: object
+      properties:
+        "content":
+          type: string
+        "style":
+          type: string
+        "iter_num":
+          type: integer
+    Res:
+      type: string
+      
+
